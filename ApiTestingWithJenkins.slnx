@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ApiTestingWithJenkins/ApiTestingWithJenkins.csproj" />
+  <Project Path="UnitTestingwithJenkins/UnitTestingwithJenkins.csproj" />
+</Solution>
