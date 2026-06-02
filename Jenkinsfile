@@ -32,12 +32,22 @@ pipeline {
                 }
             }
         }
+        // stage("Deployment") {
+        //     steps {
+        //         bat "del /q /s C:\\inetpub\\wwwroot\\isspipeline\\*"
+        //         bat "xcopy /E /Y /I publish\\* C:\\inetpub\\wwwroot\\isspipeline\\*"
+        //     }
+        // }
         stage("Deployment") {
-            steps {
-                bat "del /q /s C:\\inetpub\\wwwroot\\isspipeline\\*"
-                bat "xcopy /E /Y /I publish\\* C:\\inetpub\\wwwroot\\isspipeline\\*"
-            }
-        }
+    steps {
+        bat '%windir%\\System32\\inetsrv\\appcmd stop apppool /apppool.name:"iispipeline"'
+
+        bat "del /q /s C:\\inetpub\\wwwroot\\isspipeline\\*"
+        bat "xcopy /E /Y /I publish\\* C:\\inetpub\\wwwroot\\isspipeline\\"
+
+        bat '%windir%\\System32\\inetsrv\\appcmd start apppool /apppool.name:"iispipeline"'
+    }
+}
     }
     post {
         success {
