@@ -34,8 +34,8 @@ pipeline {
         }
         stage("Deployment") {
             steps {
-                bat "del /q /s C:\\inetpub\\wwwroot\\ApiTestingWithJenkins\\*"
-                bat "xcopy /E /Y /I publish\\* C:\\inetpub\\wwwroot\\ApiTestingWithJenkins\\*"
+                bat "del /q /s C:\\inetpub\\wwwroot\\isspipeline\\*"
+                bat "xcopy /E /Y /I publish\\* C:\\inetpub\\wwwroot\\isspipeline\\*"
             }
         }
     }
